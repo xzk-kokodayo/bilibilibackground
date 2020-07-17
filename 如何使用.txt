@@ -1,16 +1,6 @@
 将以下字段全选复制，在油猴新建插件，然后粘贴替换所有内容!By 桜wuxin
 
-// ==UserScript==
-// @name         bilibili界面背景更改完整版
-// @namespace    https://github.com/wuxintlh/
-// @version      0.3
-// @description  try to take over the world!
-// @author       桜wuxin
-// @match        *://*.bilibili.com/*
-// @grant        none
-// ==/UserScript==
-
-                var div = document.createElement('div');
+        var div = document.createElement('div');
         var body = document.querySelector('body');
         var span = document.createElement('span');
         var input = document.createElement('input');
@@ -21,6 +11,7 @@
         span.style.width = '100px';
         span.style.height = '22px';
         span.style.position = 'absolute';
+        span.style.top = '60%';
         span.style.left = '0%';
         span.style.backgroundColor = 'rgba(0,255,255,.5)';
         span.style.userSelect = 'none';
@@ -29,6 +20,7 @@
         div.style.width = '400px';
         div.style.height = '60px';
         div.style.position = 'absolute';
+        div.style.top = '60%'
         div.style.left = '100px';
         div.style.display = 'none';
         div.appendChild(input);
