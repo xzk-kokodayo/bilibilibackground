@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         bilibili界面背景更改完整版
 // @namespace    https://github.com/wuxintlh/
-// @version      0.3.4
+// @version      0.3.4.1
 // @description  try to take over the world!
 // @author       桜wuxin
 // @match        *://*.bilibili.com/*
@@ -9,6 +9,7 @@
 // @grant        none
 // ==/UserScript==
 
+        set();
         var bcurl = '';
         var host = window.location.host;
         if (host != 'live.bilibili.com') {
@@ -130,6 +131,18 @@
                 div.style.background = 'url(' + bcurl + ')';
             }
         });
+        input = document.querySelector('.SakuraInputi');
+        input.addEventListener('focus', function() {
+            if (input.value == '') {
+                input.placeholder = '';
+            }
+        });
+        input.addEventListener('blur', function() {
+            if (input.value == '') {
+                input.placeholder = '请输入完整的背景url';
+            }
+        });
+
         //打开页面时设置背景
         function set() {
             'use strict';
@@ -140,9 +153,9 @@
             div.dataUname = 'background';
             var ifbcurl = window.localStorage.getItem('bcurl')
             if (ifbcurl != '' && ifbcurl != null) {
-                div.style.background = 'url(' + window.localStorage.getItem('bcurl') + ')'//保存的背景
+                div.style.background = 'url(' + window.localStorage.getItem('bcurl') + ')' //保存的背景
             } else {
-                div.style.background = 'url(https://i0.hdslb.com/bfs/album/eb65ae5ee6f66b6381090f5bee4fe6cbabfd6d0d.png)'//默认背景
+                div.style.background = 'url(https://i0.hdslb.com/bfs/album/eb65ae5ee6f66b6381090f5bee4fe6cbabfd6d0d.png)' //默认背景
             }
             div.style.backfroundRepeat = 'no-repeat';
             div.style.position = 'fixed';
@@ -157,4 +170,3 @@
             div.style.zIndex = '-1';
             div.className = 'SakuraBackground';
         };
-        set();
