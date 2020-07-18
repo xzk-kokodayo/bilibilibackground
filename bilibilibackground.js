@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         bilibili界面背景更改完整版
 // @namespace    https://github.com/wuxintlh/
-// @version      0.3.4.1
-// @description  try to take over the world!
+// @version      0.3.4.4
+// @description  更改b站背景的懒人脚本，位置在页面左下角
 // @author       桜wuxin
 // @match        *://*.bilibili.com/*
 // @QQgroup      793513923
@@ -16,7 +16,7 @@
             spandiv();
         } else {
             var main = document.querySelector('.live-room-app').querySelector('.z-app-content');
-            if (main != true) {
+            if (main != undefined) {
                 var div = document.createElement('div');
                 var span = document.createElement('span');
                 var input = document.createElement('input');
@@ -28,10 +28,11 @@
                 span.style.height = '22px';
                 span.style.position = 'absolute';
                 span.style.top = '940px';
-                span.style.left = '0%';
+                span.style.left = '0px';
                 span.style.backgroundColor = 'rgba(0,255,255,.5)';
                 span.style.userSelect = 'none';
                 span.style.zIndex = '10';
+                span.style.fontSize = '15px';
                 main.appendChild(div);
                 div.className = 'SakuraDivd';
                 div.style.backgroundColor = 'rgba(255,0,255,.5)'
@@ -71,10 +72,11 @@
             span.style.height = '22px';
             span.style.position = 'absolute';
             span.style.top = '940px';
-            span.style.left = '0%';
+            span.style.left = '0px';
             span.style.backgroundColor = 'rgba(0,255,255,.5)';
             span.style.userSelect = 'none';
             span.style.zIndex = '10';
+            span.style.fontSize = '15px';
             body.appendChild(div);
             div.className = 'SakuraDivd';
             div.style.backgroundColor = 'rgba(255,0,255,.5)'
@@ -103,10 +105,12 @@
             span.style.top = this.scrollY + 940 + 'px';
             div.style.top = this.scrollY + 902 + 'px';
         })
-
-
-        //弹出框
         span = document.querySelector('.SakuraSpans');
+        //侧边栏弹出
+        span.addEventListener('focus', function() {
+
+            })
+            //弹出框
         span.addEventListener('click', function() {
             div = document.querySelector('.SakuraDivd');
             if (div.style.display == 'none') {
